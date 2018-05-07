@@ -12,6 +12,9 @@ bugs: https://github.com/severo-iuliano/grav-plugin-pdf-js/issues
 docs: https://github.com/severo-iuliano/grav-plugin-pdf-js/blob/develop/README.md
 license: MIT
 
+dependencies:
+  - shortcode-core
+
 form:
   validation: strict
   fields:
