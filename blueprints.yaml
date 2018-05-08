@@ -5,11 +5,11 @@ icon: plug
 author:
   name: Severo Iuliano
   email: severoiuliano@gmail.com
-homepage: https://github.com/severo-iuliano/grav-plugin-pdf-js
+homepage: https://github.com/iusvar/grav-plugin-pdf-js
 demo: http://iusvar.alwaysdata.net/grav/
 keywords: grav, plugin, pdf-js
-bugs: https://github.com/severo-iuliano/grav-plugin-pdf-js/issues
-docs: https://github.com/severo-iuliano/grav-plugin-pdf-js/blob/develop/README.md
+bugs: https://github.com/iusvar/grav-plugin-pdf-js/issues
+docs: https://github.com/iusvar/grav-plugin-pdf-js/blob/develop/README.md
 license: MIT
 
 dependencies:
