@@ -1,5 +1,5 @@
 name: Pdf-Js
-version: 0.1.0
+version: 0.1.1
 description: Allows you to embed PDF.js into pages via shortcode.
 icon: plug
 author:

@@ -70,7 +70,10 @@ class PDFJsShortcode extends Shortcode
         if (Utils::startswith($fn, 'data:')) {
             $path = $this->grav['locator']->findResource('user://data', true);
             $fn = str_replace('data:', '', $fn);
-        } else {
+        } elseif (Utils::startswith($fn, 'pdfs:')) {
+			$path = $this->grav['locator']->findResource('user://pdfs', true);
+			$fn = str_replace('pdfs:', '', $fn);
+		} else {
             $path = $this->grav['page']->path();
         }
         if ( (Utils::endswith($path, DS)) || (Utils::startswith($fn, DS)) ) {
