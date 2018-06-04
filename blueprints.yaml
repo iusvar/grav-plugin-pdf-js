@@ -6,10 +6,10 @@ author:
   name: Severo Iuliano
   email: severoiuliano@gmail.com
 homepage: https://github.com/iusvar/grav-plugin-pdf-js
-demo: http://iusvar.alwaysdata.net/grav/
+demo: http://iusvar.alwaysdata.net/grav/blog/pdfjs
 keywords: grav, plugin, pdf-js
 bugs: https://github.com/iusvar/grav-plugin-pdf-js/issues
-docs: https://github.com/iusvar/grav-plugin-pdf-js/blob/develop/README.md
+docs: https://github.com/iusvar/grav-plugin-pdf-js/blob/master/README.md
 license: MIT
 
 dependencies:
