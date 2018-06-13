@@ -59,6 +59,8 @@ The Pdf-js shortcode is a self-closing `[pdfjs option1="value1" option2="value2"
 
 * `[pdfjs=data:filename.pdf]` or `[pdfjs file=data:filename.pdf]` (basic embed of pdf file in the `user/data` folder)
 
+> Note: if the file name contains spaces use double quotes, for example: [pdfjs = "file name.pdf"]
+
 ## Credits
 
 Pdf-js is a general-purpose, web standards-based platform for parsing and rendering PDFs of Mozilla. More informations are available here:  [https://mozilla.github.io/pdf.js/](https://mozilla.github.io/pdf.js/)
