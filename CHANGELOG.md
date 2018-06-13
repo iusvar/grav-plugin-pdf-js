@@ -3,6 +3,7 @@
 
 1. [](#bugfix)
     * Fixed 'Could not resolve file name' [#2](https://github.com/iusvar/grav-plugin-pdf-js/issues/2) (thanks @Salvatos)
+    * Update README.md: 'Can't deal with spaces in file names' [#3](https://github.com/iusvar/grav-plugin-pdf-js/issues/3)
 
 # v0.1.1
 ##  05/26/2018
