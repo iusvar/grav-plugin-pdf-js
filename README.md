@@ -53,13 +53,19 @@ The Pdf-js shortcode is a self-closing `[pdfjs option1="value1" option2="value2"
 
   If all you're passing is the file name, then you can shorten the code to the form `[pdfjs=filename.pdf/]`.
 
+  FYI, slash is not essential.
+
 ### Example Codes
 
 * `[pdfjs=filename.pdf]` or `[pdfjs file=filename.pdf]` (basic embed of pdf file in the same folder as the page itself)
 
 * `[pdfjs=data:filename.pdf]` or `[pdfjs file=data:filename.pdf]` (basic embed of pdf file in the `user/data` folder)
 
-> Note: if the file name contains spaces use double quotes, for example: [pdfjs = "file name.pdf"]
+* `[pdfjs=data:subdir/filename.pdf]` or `[pdfjs file=data:subdir/filename.pdf]` (basic embed of pdf file in the `user/data/subdir` folder)
+
+> Note: `data` can take any name, for example: `pdfs` or `repository` or whatever you like.
+
+> Note: if the file name contains spaces use double quotes, for example: [pdfjs="first filename.pdf"] or [pdfjs file="first filename.pdf"] or [pdfjs="data:filename.pdf"] and so on.
 
 ## Credits
 

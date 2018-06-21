@@ -23,6 +23,10 @@ class PDFJsShortcode extends Shortcode
             $fn = str_replace(']', '', $fn);
             $fn = trim($fn);
         }
+        if( strpos($fn, ' ') || strpos($fn, '"') ) {
+			$fn = str_replace('"','',$fn);
+		}
+
         if ( ($fn === null) && ($fn === '') ) {
             return "<p>PDFJs: Malformed shortcode (<tt>".htmlspecialchars($sc->getShortcodeText())."</tt>).</p>";
         }
@@ -33,7 +37,7 @@ class PDFJsShortcode extends Shortcode
             $abspath = $this->getPath(static::sanitize($fn));
         }
         if ($abspath === null) {
-            return "<p>PDFJs: '$abspath' Could not resolve file name '$fn'.</p>";
+            return "<p>PDFJs: Could not resolve file name '$fn'.</p>";
         }
         if (!file_exists($abspath)) {
             return "<p>PDFJs: Could not find the requested data file '$fn'.</p>";
@@ -50,15 +54,6 @@ class PDFJsShortcode extends Shortcode
 
 		$height = $this->config->get('plugins.pdf-js.height');
 		$height = ( $height ? $height : 300 );
-		
-		/*$page = $this->grav['page'];
-		$this->grav['debugger']->addMessage( $page );
-		$this->grav['debugger']->addMessage( __DIR__ );
-		$this->grav['debugger']->addMessage( 'abspath: '.$abspath );
-		$this->grav['debugger']->addMessage( 'base_url: '.$base_url );
-		$this->grav['debugger']->addMessage( 'pos: '.$pos );
-		$this->grav['debugger']->addMessage( 'file_pdf: '.$pdf_file );
-		$this->grav['debugger']->addMessage( 'base_plugin: '.$base_plugin );*/
 
         $twig = $this->grav['twig'];
         $output = $twig->processTemplate('pdfjs.html.twig', [ 'base_plugin' => $base_plugin, 'pdf_file' => $pdf_file, 'height' => $height ] );
@@ -67,13 +62,23 @@ class PDFJsShortcode extends Shortcode
     }
 
     private function getPath($fn) {
-        if (Utils::startswith($fn, 'data:')) {
-            $path = $this->grav['locator']->findResource('user://data', true);
-            $fn = str_replace('data:', '', $fn);
-        } elseif (Utils::startswith($fn, 'pdfs:')) {
-			$path = $this->grav['locator']->findResource('user://pdfs', true);
-			$fn = str_replace('pdfs:', '', $fn);
-		} else {
+		$depo = null;
+		$path = null;
+
+		$colon = strpos($fn, ':');
+		if ( $colon !== false ) {
+			$depo = strstr($fn, ':', true);
+			$path = $this->grav['locator']->findResource('user://'.$depo, true);
+			$fn = substr(strrchr($fn, ':'), 1);
+		}
+
+		$slash = strrpos($fn, '/');
+		if ( $slash !== false ) {
+			$subpath = substr($fn,0,$slash);
+			$fn = substr(strrchr($fn, "/"), 1);
+			$path = $this->grav['locator']->findResource('user://'.$depo.DS.$subpath, true);
+		}
+		if ( $colon === false && $slash === false ) {
             $path = $this->grav['page']->path();
         }
         if ( (Utils::endswith($path, DS)) || (Utils::startswith($fn, DS)) ) {
