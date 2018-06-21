@@ -2,7 +2,7 @@
 
 The **Pdf-js** Plugin is for [Grav CMS](http://github.com/getgrav/grav). It allows you to embed [PDF.js](https://mozilla.github.io/pdf.js/) into pages via shortcode.
 
-For a demo, [visit my blog](http://iusvar.alwaysdata.net/grav/pdfjs).
+For a demo, [visit my blog](http://iusvar.alwaysdata.net/grav/blog/pdfjs).
 
 ## Installation
 
