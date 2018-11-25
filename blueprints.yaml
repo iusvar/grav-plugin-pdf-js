@@ -1,4 +1,4 @@
-name: Pdf-Js
+name: PdfJs
 version: 0.1.2
 description: Allows you to embed PDF.js into pages via shortcode.
 icon: plug
@@ -28,11 +28,29 @@ form:
         0: Disabled
       validate:
         type: bool
+    width:
+      type: text
+      size: x-small
+      label: Window width
+      append: px
+      help: "Sets the Window width in pixels"
+      validate:
+          type: number
     height:
       type: text
-      size: small
+      size: x-small
       label: Window height
       append: px
       help: "Sets the Window height in pixels"
       validate:
           type: number
+    technique:
+      type: toggle
+      label: PLUGIN_PDFJS.TECHNIQUE
+      default: 'pdfjs'
+      highlight: 'pdfobject'
+      options:
+        'embed': PLUGIN_PDFJS.EMBED
+        'object': PLUGIN_PDFJS.OBJECT
+        'pdfjs': PLUGIN_PDFJS.PDFJS
+        'pdfobject': PLUGIN_PDFJS.PDFOBJECT

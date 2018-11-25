@@ -1,6 +1,7 @@
 <?php
 namespace Grav\Plugin;
 
+use Grav\Common\Grav;
 use Grav\Common\Plugin;
 use RocketTheme\Toolbox\Event\Event;
 
@@ -55,12 +56,19 @@ class PDFJsPlugin extends Plugin
 
     public function onTwigSiteVariables()
     {
-        $this->grav['assets']->add('plugin://pdf-js/web/viewer.min.css');
+      $config = Grav::instance()['config'];
+      $pdflibrary = $config->get('plugins.pdfjs.pdflibrary');
+      switch ($pdflibrary) {
+        case 'pdfjs':
+          $this->grav['assets']->add('plugin://pdfjs/web/viewer.min.css');
+          // KEEP THIS REQUEST IN MIND -> https://github.com/iusvar/grav-plugin-pdf-js/issues/7          
+          $this->grav['assets']->add('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.489/pdf.min.js');
+          $this->grav['assets']->add('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.489/pdf.worker.js');
+          break;
+        case 'pdfobject':
+          $this->grav['assets']->add('plugin://pdfjs/assets/pdfobject.js');
+          break;
+      }
         
-		//$this->grav['assets']->add('plugin://pdf-js/build/pdf.js');
-		$this->grav['assets']->add('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.489/pdf.min.js');
-
-		//$this->grav['assets']->add('plugin://pdf-js/build/pdf.worker.js');
-		$this->grav['assets']->add('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.489/pdf.worker.js');
     }
 }

@@ -1,3 +1,12 @@
+# v0.2.0
+## 11/25/2018
+
+1. [](#new)
+    * Add library PDFObject and two tags HTML: embed and object
+    * Add English and Italian languages
+1. [](#bugfix)
+    * Removed the dash from pdf-js
+    
 # v0.1.2
 ## 06/21/2018
 

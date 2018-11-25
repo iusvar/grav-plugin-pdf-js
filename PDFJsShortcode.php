@@ -24,13 +24,16 @@ class PDFJsShortcode extends Shortcode
             $fn = trim($fn);
         }
         if( strpos($fn, ' ') || strpos($fn, '"') ) {
-			$fn = str_replace('"','',$fn);
-		}
+          $fn = str_replace('"','',$fn);
+        }
 
         if ( ($fn === null) && ($fn === '') ) {
             return "<p>PDFJs: Malformed shortcode (<tt>".htmlspecialchars($sc->getShortcodeText())."</tt>).</p>";
         }
 
+        $width      = $sc->getParameter('width', null);
+        $height     = $sc->getParameter('height', null);
+        
         // Get absolute file name
         $abspath = null;
         if ($fn!== null) {
@@ -43,20 +46,24 @@ class PDFJsShortcode extends Shortcode
             return "<p>PDFJs: Could not find the requested data file '$fn'.</p>";
         }
 
-		$base_url = $this->grav['base_url_relative'];
-		$dir = __DIR__;
-		
-		$pos = strpos($dir, $base_url);
-		$base_plugin = substr($dir,$pos);
-		
-		$pos = strpos($abspath, $base_url);
-		$pdf_file = substr($abspath, $pos);
+        $base_url = $this->grav['base_url_relative'];
+        $dir = __DIR__;
 
-		$height = $this->config->get('plugins.pdf-js.height');
-		$height = ( $height ? $height : 300 );
+        $parameters = array();
+        
+        $pos = strpos($dir, $base_url);
+        $parameters['base_plugin'] = substr($dir,$pos);
+        
+        $pos = strpos($abspath, $base_url);
+        $parameters['pdf_file'] = substr($abspath, $pos);
+
+        $config_width = $this->config->get('plugins.pdfjs.width');
+        $config_height = $this->config->get('plugins.pdfjs.height');
+        $parameters['width'] = ( $width ? $width : $config_width );
+        $parameters['height'] = ( $height ? $height : $config_height );
 
         $twig = $this->grav['twig'];
-        $output = $twig->processTemplate('pdfjs.html.twig', [ 'base_plugin' => $base_plugin, 'pdf_file' => $pdf_file, 'height' => $height ] );
+        $output = $twig->processTemplate('pdfjs.html.twig', ['parameters' => $parameters] );
 
         return $output;
     }

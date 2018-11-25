@@ -1,0 +1,7 @@
+# Italiano
+PLUGIN_PDFJS:
+  TECHNIQUE: Tecnica
+  EMBED: Incorporare (HTML Embed) 
+  OBJECT: Oggetto (HTML Object)
+  PDFJS: PDF.JS
+  PDFOBJECT: PDFObject
