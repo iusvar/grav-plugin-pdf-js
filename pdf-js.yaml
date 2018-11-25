@@ -1,0 +1,5 @@
+enabled: true
+width: 600
+height: 300
+technique: pdfobject
+show_used_technique: 0

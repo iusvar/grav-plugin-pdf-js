@@ -1,7 +1,12 @@
 # Italiano
 PLUGIN_PDFJS:
+  WINDOW_WIDTH: Larghezza finestra
+  WINDOW_WIDTH_HELP: Imposta la larghezza della finestra in pixel
+  WINDOW_HEIGHT: Altezza finestra
+  WINDOW_HEIGHT_HELP: Imposta l'altezza della finestra in pixel
   TECHNIQUE: Tecnica
-  EMBED: Incorporare (HTML Embed) 
-  OBJECT: Oggetto (HTML Object)
+  EMBED: HTML Embed
+  OBJECT: HTML Object
   PDFJS: PDF.JS
   PDFOBJECT: PDFObject
+  SHOW_USED_TECHNIQUE: Mostra tecnica usata (debug)

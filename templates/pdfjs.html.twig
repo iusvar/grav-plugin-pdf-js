@@ -1,10 +1,13 @@
-{% set technique = config.plugins.pdfjs.technique %}
+{% set base_plugin = parameters['base_plugin'] %}
+{% set technique = parameters['technique'] %}
 {% set pdf_file = parameters['pdf_file'] %}
 {% set width = parameters['width'] %}
 {% set height = parameters['height'] %}
-{% set base_plugin = parameters['base_plugin'] %}
+{% set show_used_technique = parameters['show_used_technique'] %}
 
-
+{% if show_used_technique %}
+  [{{ technique }}]
+{% endif %}
 
 {% if technique == 'object' %}
   <object data="{{ pdf_file }}" type="application/pdf" width="{{ width }}" height="{{ height }}">
@@ -37,8 +40,6 @@
 
 <script id="pdf_file" data-file="{{ pdf_file }}" src="{{ base_plugin }}/web/viewer.min.js"></script>
 <link rel="resource" type="application/l10n" href="{{ base_plugin }}/web/locale/locale.properties">
-
-<p>{{ pdf_file|basename }}</p>
 
 <div style="width:100%;height:{{ height }}px;min-height:{{ height }}px;">
 	<div id="outerContainer">

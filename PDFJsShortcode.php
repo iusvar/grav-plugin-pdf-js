@@ -53,12 +53,14 @@ class PDFJsShortcode extends Shortcode
         
         $pos = strpos($dir, $base_url);
         $parameters['base_plugin'] = substr($dir,$pos);
+        $parameters['technique'] = $this->config->get('plugins.pdf-js.technique');
+        $parameters['show_used_technique'] = $this->config->get('plugins.pdf-js.show_used_technique');
         
         $pos = strpos($abspath, $base_url);
         $parameters['pdf_file'] = substr($abspath, $pos);
 
-        $config_width = $this->config->get('plugins.pdfjs.width');
-        $config_height = $this->config->get('plugins.pdfjs.height');
+        $config_width = $this->config->get('plugins.pdf-js.width');
+        $config_height = $this->config->get('plugins.pdf-js.height');
         $parameters['width'] = ( $width ? $width : $config_width );
         $parameters['height'] = ( $height ? $height : $config_height );
 

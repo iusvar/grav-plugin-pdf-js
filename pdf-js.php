@@ -57,16 +57,16 @@ class PDFJsPlugin extends Plugin
     public function onTwigSiteVariables()
     {
       $config = Grav::instance()['config'];
-      $pdflibrary = $config->get('plugins.pdfjs.pdflibrary');
-      switch ($pdflibrary) {
+      $technique = $config->get('plugins.pdf-js.technique');
+      switch ($technique) {
         case 'pdfjs':
-          $this->grav['assets']->add('plugin://pdfjs/web/viewer.min.css');
+          $this->grav['assets']->add('plugin://pdf-js/web/viewer.min.css');
           // KEEP THIS REQUEST IN MIND -> https://github.com/iusvar/grav-plugin-pdf-js/issues/7          
           $this->grav['assets']->add('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.489/pdf.min.js');
           $this->grav['assets']->add('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.489/pdf.worker.js');
           break;
         case 'pdfobject':
-          $this->grav['assets']->add('plugin://pdfjs/assets/pdfobject.js');
+          $this->grav['assets']->add('plugin://pdf-js/assets/pdfobject.js');
           break;
       }
         

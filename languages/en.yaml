@@ -1,7 +1,12 @@
 # English
 PLUGIN_PDFJS:
+  WINDOW_WIDTH: Window width
+  WINDOW_WIDTH_HELP: "Sets the Window width in pixels"
+  WINDOW_HEIGHT: Window height
+  WINDOW_HEIGHT_HELP: "Sets the Window height in pixels"
   TECHNIQUE: Technique
   EMBED: Embed
   OBJECT: Object
   PDFJS: PDF.JS
   PDFOBJECT: PDFObject
+  SHOW_USED_TECHNIQUE: Show Used Technique (debug)

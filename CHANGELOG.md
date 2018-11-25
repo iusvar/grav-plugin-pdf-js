@@ -4,8 +4,9 @@
 1. [](#new)
     * Add library PDFObject and two tags HTML: embed and object
     * Add English and Italian languages
+    * Add option to show the technique used (debugging only)
 1. [](#bugfix)
-    * Removed the dash from pdf-js
+    * Fixed the problem of the dash in Twig
     
 # v0.1.2
 ## 06/21/2018
