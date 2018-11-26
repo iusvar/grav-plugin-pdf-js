@@ -9,35 +9,6 @@
   [{{ technique }}]
 {% endif %}
 
-{% if technique == 'object' %}
-  <object data="{{ pdf_file }}" type="application/pdf" width="{{ width }}" height="{{ height }}">
-    alt : <a href="{{ pdf_file }}">{{ pdf_file }}</a>
-  </object>
-{% endif %}
-
-
-
-{% if technique == "embed" %}
-  <embed src= "{{ pdf_file }}" width="{{ width }}" height="{{ height }}">
-{% endif %}
-
-
-
-{% if technique == "pdfobject" %}
-  <div id="example1"></div>
-  <script>
-    var options = {
-      width: "{{ width }}px",
-      height: "{{ height }}px"
-    };
-    PDFObject.embed("{{ pdf_file }}", "#example1", options);
-  </script>
-{% endif %}
-
-
-
-{% if technique == "pdfjs" %}
-
 <script id="pdf_file" data-file="{{ pdf_file }}" src="{{ base_plugin }}/web/viewer.min.js"></script>
 <link rel="resource" type="application/l10n" href="{{ base_plugin }}/web/locale/locale.properties">
 
@@ -343,5 +314,3 @@
 	</div>
 	<div id="printContainer"></div>
 </div>
-
-{% endif %}

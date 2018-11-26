@@ -59,11 +59,10 @@ class PDFJsPlugin extends Plugin
       $config = Grav::instance()['config'];
       $technique = $config->get('plugins.pdf-js.technique');
       switch ($technique) {
-        case 'pdfjs':
+        case 'pdfjs':      
           $this->grav['assets']->add('plugin://pdf-js/web/viewer.min.css');
-          // KEEP THIS REQUEST IN MIND -> https://github.com/iusvar/grav-plugin-pdf-js/issues/7          
-          $this->grav['assets']->add('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.489/pdf.min.js');
-          $this->grav['assets']->add('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.489/pdf.worker.js');
+          $this->grav['assets']->add('plugin://pdf-js/web/pdf.min.js');
+          $this->grav['assets']->add('plugin://pdf-js/web/pdf.worker.min.js');
           break;
         case 'pdfobject':
           $this->grav['assets']->add('plugin://pdf-js/assets/pdfobject.js');

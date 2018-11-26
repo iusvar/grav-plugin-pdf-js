@@ -28,11 +28,11 @@ class PDFJsShortcode extends Shortcode
         }
 
         if ( ($fn === null) && ($fn === '') ) {
-            return "<p>PDFJs: Malformed shortcode (<tt>".htmlspecialchars($sc->getShortcodeText())."</tt>).</p>";
+            return "<code>PDF-Js: Malformed shortcode (<tt>".htmlspecialchars($sc->getShortcodeText())."</tt>).</code>";
         }
 
-        $width      = $sc->getParameter('width', null);
-        $height     = $sc->getParameter('height', null);
+        $width = $sc->getParameter('width', null);
+        $height = $sc->getParameter('height', null);
         
         // Get absolute file name
         $abspath = null;
@@ -40,10 +40,10 @@ class PDFJsShortcode extends Shortcode
             $abspath = $this->getPath(static::sanitize($fn));
         }
         if ($abspath === null) {
-            return "<p>PDFJs: Could not resolve file name '$fn'.</p>";
+            return "<code>PDF-Js: Could not resolve file name '$fn'.</code>";
         }
         if (!file_exists($abspath)) {
-            return "<p>PDFJs: Could not find the requested data file '$fn'.</p>";
+            return "<code>PDF-Js: Could not find the requested data file '$fn'.</code>";
         }
 
         $base_url = $this->grav['base_url_relative'];
@@ -53,7 +53,8 @@ class PDFJsShortcode extends Shortcode
         
         $pos = strpos($dir, $base_url);
         $parameters['base_plugin'] = substr($dir,$pos);
-        $parameters['technique'] = $this->config->get('plugins.pdf-js.technique');
+        $technique = $this->config->get('plugins.pdf-js.technique');
+        $parameters['technique'] = $technique;
         $parameters['show_used_technique'] = $this->config->get('plugins.pdf-js.show_used_technique');
         
         $pos = strpos($abspath, $base_url);
@@ -64,8 +65,15 @@ class PDFJsShortcode extends Shortcode
         $parameters['width'] = ( $width ? $width : $config_width );
         $parameters['height'] = ( $height ? $height : $config_height );
 
+        $technique = strtolower( $technique );
+        $techniques = ['embed','object','pdfjs','pdfobject'];
+        if (in_array($technique, $techniques)) {
+          $template = $technique.'.html.twig';
+        } else {
+          return "<code>PDF-Js: '$technique', technique value in the pdf-js.yaml file, is not one of the four expected values.</code>";
+        }
         $twig = $this->grav['twig'];
-        $output = $twig->processTemplate('pdfjs.html.twig', ['parameters' => $parameters] );
+        $output = $twig->processTemplate( $template, ['parameters' => $parameters] );
 
         return $output;
     }

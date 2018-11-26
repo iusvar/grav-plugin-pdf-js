@@ -1,11 +1,6 @@
 # Pdf-js Plugin
 
-The **Pdf-js** Plugin is for [Grav CMS](http://github.com/getgrav/grav). It allows you to embed [PDF.js](https://mozilla.github.io/pdf.js/) into pages via shortcode.
-
-> Please note that this guide is not updated to the latest version 0.2.0 (will be updated asap)
-
-> The most important change is the alternatives added to pdf-js. Now you can also use pdfobject or embed or object tags
-
+The **Pdf-js** Plugin is for [Grav CMS](http://github.com/getgrav/grav). It allows you to embed PDF files into pages via shortcode.
 
 For a demo, [visit my blog](http://iusvar.alwaysdata.net/grav/blog/pdfjs).
 
@@ -41,10 +36,13 @@ Before configuring this plugin, you should copy the `user/plugins/pdf-js/pdf-js.
 
 Here is the default configuration and an explanation of available options:
 
-```yaml
-enabled: true
-height: 300
-```
+| Variable | Default | Options | Note |
+|----------|---------|---------|------|
+| enabled | `true` | `true` or `false` | Set to false to disable this plugin completely. |
+| width | `600` | | Sets the Window width in pixels |
+| height | `300` | | Sets the Window height in pixels |
+| technique | `pdfobject` | `embed`, `object`, `pdfjs`, `pdfobject` | The technique for embedding pdf files on the page |
+| show_used_technique | `false` | | Show Used Technique (debug) |
 
 Note that if you use the admin plugin, a file with your configuration, and named pdf-js.yaml will be saved in the `user/config/plugins/` folder once the configuration is saved in the admin.
 
@@ -56,13 +54,21 @@ The Pdf-js shortcode is a self-closing `[pdfjs option1="value1" option2="value2"
 
 * `file` is the only required parameter. It points to the datafile you wish to load. By default, the plugin looks in the same folder as the page file. This is adequate for most usage. You can also load files from the `user/data` folder by prefixing your file name with `data:` (e.g., `file=data:folder/filename.pdf`). 
 
+* `width` set the width of the window. If not evaluated, the default value is used.
+
+* `height` set the height of the window. If not evaluated, the default value is used.
+
   If all you're passing is the file name, then you can shorten the code to the form `[pdfjs=filename.pdf/]`.
 
   FYI, slash is not essential.
 
 ### Example Codes
 
+Multiple PDF files can also be embedded on a page except for Pdf-Js.
+
 * `[pdfjs=filename.pdf]` or `[pdfjs file=filename.pdf]` (basic embed of pdf file in the same folder as the page itself)
+
+* `[pdfjs file=filename.pdf width=300 height=400]` (basic embed of pdf file in the same folder as the page itself, in a window of 400 pixels in width and 300 pixels in height)
 
 * `[pdfjs=data:filename.pdf]` or `[pdfjs file=data:filename.pdf]` (basic embed of pdf file in the `user/data` folder)
 
@@ -74,11 +80,15 @@ The Pdf-js shortcode is a self-closing `[pdfjs option1="value1" option2="value2"
 
 ## Credits
 
-Pdf-js is a general-purpose, web standards-based platform for parsing and rendering PDFs of Mozilla. More informations are available here:  [https://mozilla.github.io/pdf.js/](https://mozilla.github.io/pdf.js/)
+Pdf-js is a general-purpose, web standards-based platform for parsing and rendering PDFs of Mozilla. More informations are available here:  [https://mozilla.github.io/pdf.js/](https://mozilla.github.io/pdf.js/).
+
+[PDFObject](https://pdfobject.com/) is an open-source standards-friendly JavaScript utility for embedding PDF files into HTML documents.
 
 ## To Do
 
-- [ ] Reduce the size of the library.
+- [ ] Incorporate more than one pdf with Pdf-Js
+
+- [ ] Reduce the size of the Pdf-Js library.
 
 - [ ] Make the toolbar buttons available via Admin.
 

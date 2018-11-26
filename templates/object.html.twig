@@ -1,0 +1,15 @@
+{% set base_plugin = parameters['base_plugin'] %}
+{% set technique = parameters['technique'] %}
+{% set pdf_file = parameters['pdf_file'] %}
+{% set width = parameters['width'] %}
+{% set height = parameters['height'] %}
+{% set show_used_technique = parameters['show_used_technique'] %}
+
+{% if show_used_technique %}
+  [{{ technique }}]
+{% endif %}
+
+<object data="{{ pdf_file }}" type="application/pdf" width="{{ width }}" height="{{ height }}">
+  alt : <a href="{{ pdf_file }}">{{ pdf_file }}</a>
+</object>
+
