@@ -1,10 +1,12 @@
-# v0.2.1
-## xx/xx/2018
+# v0.3.0
+## 04/09/2019
 
 1. [](#new)
     * Scripts hosted locally [#7](https://github.com/iusvar/grav-plugin-pdf-js/issues/7)
     * Possibility of incorporating more than one pdf per page with the exception of Pdf-Js
     * Update README.md
+1. [](#bugfix)
+    * Fixed empty needle in strpos [#9](https://github.com/iusvar/grav-plugin-pdf-js/issues/9)
     
 # v0.2.0
 ## 11/25/2018
